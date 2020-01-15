@@ -30,5 +30,48 @@ public class SignedUpDTO {
         this.classs = new ClassDTO(sign.getClasss());
         this.student = new StudentDTO(sign.getStudent());
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public Date getPassedDate() {
+        return passedDate;
+    }
+
+    public void setPassedDate(Date passedDate) {
+        this.passedDate = passedDate;
+    }
+
+    public ClassDTO getClasss() {
+        return classs;
+    }
+
+    public void setClasss(ClassDTO classs) {
+        this.classs = classs;
+    }
+
+    public StudentDTO getStudent() {
+        return student;
+    }
+
+    public void setStudent(StudentDTO student) {
+        this.student = student;
+    }
+    
+    
+    
     
 }

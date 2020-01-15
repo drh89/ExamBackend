@@ -32,5 +32,31 @@ public class TeacherDTO {
         }
         
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<ClassDTO> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<ClassDTO> classes) {
+        this.classes = classes;
+    }
+    
+    
     
 }

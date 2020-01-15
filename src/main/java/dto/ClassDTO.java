@@ -41,5 +41,54 @@ public class ClassDTO {
             signedUps.add(new SignedUpDTO(sign));
         }
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public int getMaxNumberOfStudents() {
+        return maxNumberOfStudents;
+    }
+
+    public void setMaxNumberOfStudents(int maxNumberOfStudents) {
+        this.maxNumberOfStudents = maxNumberOfStudents;
+    }
+
+    public CourseDTO getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseDTO course) {
+        this.course = course;
+    }
+
+    public List<TeacherDTO> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<TeacherDTO> teachers) {
+        this.teachers = teachers;
+    }
+
+    public List<SignedUpDTO> getSignedUps() {
+        return signedUps;
+    }
+
+    public void setSignedUps(List<SignedUpDTO> signedUps) {
+        this.signedUps = signedUps;
+    }
+    
     
 }
