@@ -43,7 +43,8 @@ public class Class implements Serializable {
     @Column(name = "maxNumberOfStudents")
     private int maxNumberOfStudents;
 
-    @ManyToOne
+    @ManyToOne    
+    @JoinColumn(name = "courseId")    
     private Course course;
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)

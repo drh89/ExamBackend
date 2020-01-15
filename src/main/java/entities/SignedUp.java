@@ -33,6 +33,8 @@ public class SignedUp implements Serializable {
     
     @Column(name = "grade")
     private String grade;
+    
+    @Column(name = "passedDate")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date passedDate;
 

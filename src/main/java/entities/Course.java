@@ -39,7 +39,7 @@ public class Course implements Serializable {
     private String description;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    @JoinColumn(name = "classId")
+    
     private List<Class> classes = new ArrayList();
     
     public Course(){
