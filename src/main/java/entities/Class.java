@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,12 +20,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dennis
  */
 @Entity
+@Table(name = "Class")
 public class Class implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,11 +49,68 @@ public class Class implements Serializable {
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinTable(name = "ClassHasTeacher", joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "teacherId"))
-    private List<Teacher> teachers;
+    private List<Teacher> teachers = new ArrayList();
 
-    @OneToMany(mappedBy = "_class")
-    private List<SignedUp> signedUps;
+    @OneToMany(mappedBy = "clas")
+    private List<SignedUp> signedUps = new ArrayList();
 
+    public Class() {
+    }
+
+    public Class(String semester, int maxNumberOfStudents) {
+        this.semester = semester;
+        this.maxNumberOfStudents = maxNumberOfStudents;
+        course = new Course();
+    }
+    
+    
+    public void addTeacher(Teacher t){
+        teachers.add(t);
+    }
+    public void addSignedUps(SignedUp sU){
+        signedUps.add(sU);
+    }
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public int getMaxNumberOfStudents() {
+        return maxNumberOfStudents;
+    }
+
+    public void setMaxNumberOfStudents(int maxNumberOfStudents) {
+        this.maxNumberOfStudents = maxNumberOfStudents;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
+    public List<SignedUp> getSignedUps() {
+        return signedUps;
+    }
+
+    public void setSignedUps(List<SignedUp> signedUps) {
+        this.signedUps = signedUps;
+    }
+
+    
     public int getId() {
         return id;
     }

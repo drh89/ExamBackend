@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +16,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dennis
  */
 @Entity
+@Table(name = "Courses")
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,8 +40,45 @@ public class Course implements Serializable {
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     @JoinColumn(name = "classId")
-    private List<Class> classes;
+    private List<Class> classes = new ArrayList();
+    
+    public Course(){
+        
+    }
+    public Course(String courseName, String description){
+        this.courseName = courseName;
+        this.description = description;
+    }
+    
+    public void addClass(Class c){
+        classes.add(c);
+    }
+    
+    public String getCourseName() {
+        return courseName;
+    }
 
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Class> classes) {
+        this.classes = classes;
+    }
+
+    
     public int getId() {
         return id;
     }

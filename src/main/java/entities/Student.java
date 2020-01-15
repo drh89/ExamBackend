@@ -6,19 +6,24 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dennis
  */
 @Entity
+@Table(name = "Students")
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,12 +34,57 @@ public class Student implements Serializable {
 
     @Column(name = "email")
     private String email;
-    
-    @Column(name ="name")
+
+    @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "student")
-    private List<SignedUp> signUps;
+    private List<SignedUp> signUps = new ArrayList();
+
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
+    
+    public Student(){
+        
+    }
+
+    public Student(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<SignedUp> getSignUps() {
+        return signUps;
+    }
+
+    public void setSignUps(List<SignedUp> signUps) {
+        this.signUps = signUps;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;

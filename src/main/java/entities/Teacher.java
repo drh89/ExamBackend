@@ -6,19 +6,24 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dennis
  */
 @Entity
+@Table(name = "Teachers")
 public class Teacher implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,7 +36,50 @@ public class Teacher implements Serializable {
     private String name;
     
     @ManyToMany(mappedBy = "teachers")
-    private List<Class> classes;
+    private List<Class> classes = new ArrayList();
+    
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;  
+
+    public Teacher() {
+    }
+
+    public Teacher(String name) {
+        this.name = name;
+        
+    }
+    
+    public void addClasses(Class c){
+        classes.add(c);
+    }
+    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Class> classes) {
+        this.classes = classes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+        
+    
 
     public int getId() {
         return id;

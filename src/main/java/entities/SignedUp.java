@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -21,6 +22,7 @@ import javax.persistence.Temporal;
  * @author Dennis
  */
 @Entity
+@Table(name = "SignedUps")
 public class SignedUp implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,12 +38,58 @@ public class SignedUp implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "classId")
-    private Class _class;
+    private Class clas;
 
     @ManyToOne
     @JoinColumn(name = "studentId")
     private Student student;
+    
+    public SignedUp(){
+        
+    }
 
+    public SignedUp(String grade) {
+        this.grade = grade;
+        passedDate = null;
+        clas = new Class();
+        student = new Student();
+    }
+    
+    
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public Date getPassedDate() {
+        return passedDate;
+    }
+
+    public void setPassedDate(Date passedDate) {
+        this.passedDate = passedDate;
+    }
+
+    public Class getClasss() {
+        return clas;
+    }
+
+    public void setClas(Class clas) {
+        this.clas = clas;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    
+    
+    
     public int getId() {
         return id;
     }

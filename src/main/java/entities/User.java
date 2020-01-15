@@ -10,13 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -30,11 +31,16 @@ public class User implements Serializable {
   @Size(min = 1, max = 255)
   @Column(name = "user_pass")
   private String userPass;
-  @JoinTable(name = "user_roles", joinColumns = {
+  @JoinTable(name = "UserRoles", joinColumns = {
     @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
     @JoinColumn(name = "role_name", referencedColumnName = "role_name")})
   @ManyToMany
   private List<Role> roleList = new ArrayList();
+    @OneToOne(mappedBy = "user")
+    private Teacher teacher;
+    
+    @OneToOne(mappedBy = "user")
+    private Student student;
 
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
@@ -60,6 +66,23 @@ public class User implements Serializable {
     this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
   }
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+  
+  
 
   public String getUserName() {
     return userName;
