@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,9 +39,9 @@ public class Course implements Serializable {
     @Column(name ="description")
     private String description;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "course", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
     
-    private List<Class> classes = new ArrayList();
+    private List<Classs> classes = new ArrayList();
     
     public Course(){
         
@@ -50,7 +51,7 @@ public class Course implements Serializable {
         this.description = description;
     }
     
-    public void addClass(Class c){
+    public void addClass(Classs c){
         classes.add(c);
     }
     
@@ -70,11 +71,11 @@ public class Course implements Serializable {
         this.description = description;
     }
 
-    public List<Class> getClasses() {
+    public List<Classs> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<Class> classes) {
+    public void setClasses(List<Classs> classes) {
         this.classes = classes;
     }
 

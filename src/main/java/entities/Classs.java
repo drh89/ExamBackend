@@ -28,7 +28,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Class")
-public class Class implements Serializable {
+public class Classs implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Column(name = "id")
@@ -43,25 +43,25 @@ public class Class implements Serializable {
     @Column(name = "maxNumberOfStudents")
     private int maxNumberOfStudents;
 
-    @ManyToOne    
+    @ManyToOne(cascade = {CascadeType.PERSIST})    
     @JoinColumn(name = "courseId")    
     private Course course;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinTable(name = "ClassHasTeacher", joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "teacherId"))
     private List<Teacher> teachers = new ArrayList();
 
-    @OneToMany(mappedBy = "clas")
+    @OneToMany(mappedBy = "clas", cascade = {CascadeType.PERSIST})
     private List<SignedUp> signedUps = new ArrayList();
 
-    public Class() {
+    public Classs() {
     }
 
-    public Class(String semester, int maxNumberOfStudents) {
+    public Classs(String semester, int maxNumberOfStudents) {
         this.semester = semester;
         this.maxNumberOfStudents = maxNumberOfStudents;
-        course = new Course();
+        
     }
     
     
@@ -130,10 +130,10 @@ public class Class implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Class)) {
+        if (!(object instanceof Classs)) {
             return false;
         }
-        Class other = (Class) object;
+        Classs other = (Classs) object;
         if (this.id != other.id) {
             return false;
         }

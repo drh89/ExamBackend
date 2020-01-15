@@ -7,6 +7,7 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,9 +39,9 @@ public class SignedUp implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date passedDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "classId")
-    private Class clas;
+    private Classs clas;
 
     @ManyToOne
     @JoinColumn(name = "studentId")
@@ -53,8 +54,7 @@ public class SignedUp implements Serializable {
     public SignedUp(String grade) {
         this.grade = grade;
         passedDate = null;
-        clas = new Class();
-        student = new Student();
+        
     }
     
     
@@ -74,11 +74,11 @@ public class SignedUp implements Serializable {
         this.passedDate = passedDate;
     }
 
-    public Class getClasss() {
+    public Classs getClasss() {
         return clas;
     }
 
-    public void setClas(Class clas) {
+    public void setClas(Classs clas) {
         this.clas = clas;
     }
 

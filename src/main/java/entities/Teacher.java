@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,8 +36,8 @@ public class Teacher implements Serializable {
     @Column(name ="name")
     private String name;
     
-    @ManyToMany(mappedBy = "teachers")
-    private List<Class> classes = new ArrayList();
+    @ManyToMany(mappedBy = "teachers", cascade = {CascadeType.PERSIST})
+    private List<Classs> classes = new ArrayList();
     
     @OneToOne
     @JoinColumn(name = "userId")
@@ -50,7 +51,7 @@ public class Teacher implements Serializable {
         
     }
     
-    public void addClasses(Class c){
+    public void addClasses(Classs c){
         classes.add(c);
     }
     
@@ -63,11 +64,11 @@ public class Teacher implements Serializable {
         this.name = name;
     }
 
-    public List<Class> getClasses() {
+    public List<Classs> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<Class> classes) {
+    public void setClasses(List<Classs> classes) {
         this.classes = classes;
     }
 
