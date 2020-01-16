@@ -15,12 +15,14 @@ import javax.ws.rs.core.MediaType;
 @Path("web")
 public class WebResource {
 
-    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/Exam2020",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
+//    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
+//                "pu",
+//                "jdbc:mysql://localhost:3307/Exam2020",
+//                "dev",
+//                "ax2",
+//                EMF_Creator.Strategy.CREATE);
+        private static EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE);
+
     private static final Facade FACADE =  Facade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
@@ -33,7 +35,7 @@ public class WebResource {
     }
     
     public static void main(String[] args) {
-        System.out.println(FACADE.getAllSignedUpByStudentId(3).get(0).getGrade());
+        System.out.println(FACADE.getStudentByUsername("Student1").getName());
     }
     
     
