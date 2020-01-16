@@ -24,7 +24,7 @@ import javax.persistence.Table;
  * @author Dennis
  */
 @Entity
-@Table(name = "Teachers")
+@Table(name = "Teacher")
 public class Teacher implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,7 +37,7 @@ public class Teacher implements Serializable {
     private String name;
     
     @ManyToMany(mappedBy = "teachers", cascade = {CascadeType.PERSIST})
-    private List<Classs> classes = new ArrayList();
+    private List<SchoolClass> classes = new ArrayList();
     
     @OneToOne
     @JoinColumn(name = "userId")
@@ -51,7 +51,7 @@ public class Teacher implements Serializable {
         
     }
     
-    public void addClasses(Classs c){
+    public void addClasses(SchoolClass c){
         classes.add(c);
     }
     
@@ -64,11 +64,11 @@ public class Teacher implements Serializable {
         this.name = name;
     }
 
-    public List<Classs> getClasses() {
+    public List<SchoolClass> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<Classs> classes) {
+    public void setClasses(List<SchoolClass> classes) {
         this.classes = classes;
     }
 

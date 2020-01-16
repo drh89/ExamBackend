@@ -26,9 +26,9 @@ public class StudentDTO {
         this.id = s.getId();
         this.email = s.getEmail();
         this.name = s.getName();
-        for(SignedUp sign : s.getSignUps()){
-            signedUps.add(new SignedUpDTO(sign));
-        }
+//        for(SignedUp sign : s.getSignUps()){
+//            signedUps.add(new SignedUpDTO(sign));
+//        }
         
     }
 

@@ -5,7 +5,7 @@
  */
 package dto;
 
-import entities.Classs;
+import entities.SchoolClass;
 import entities.Teacher;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class TeacherDTO {
     private int id;
     private String name;
     
-    private List<ClassDTO> classes = new ArrayList();
+    private List<SchoolClassDTO> classes = new ArrayList();
     
     public TeacherDTO(){
         
@@ -27,8 +27,8 @@ public class TeacherDTO {
     public TeacherDTO(Teacher t){
         this.id = t.getId();
         this.name = t.getName();
-        for(Classs c : t.getClasses()){
-            classes.add(new ClassDTO(c));
+        for(SchoolClass c : t.getClasses()){
+            classes.add(new SchoolClassDTO(c));
         }
         
     }
@@ -49,11 +49,11 @@ public class TeacherDTO {
         this.name = name;
     }
 
-    public List<ClassDTO> getClasses() {
+    public List<SchoolClassDTO> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<ClassDTO> classes) {
+    public void setClasses(List<SchoolClassDTO> classes) {
         this.classes = classes;
     }
     

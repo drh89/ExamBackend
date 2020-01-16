@@ -27,8 +27,8 @@ import javax.persistence.Table;
  * @author Dennis
  */
 @Entity
-@Table(name = "Class")
-public class Classs implements Serializable {
+@Table(name = "SchoolClass")
+public class SchoolClass implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Column(name = "id")
@@ -55,10 +55,10 @@ public class Classs implements Serializable {
     @OneToMany(mappedBy = "clas", cascade = {CascadeType.PERSIST})
     private List<SignedUp> signedUps = new ArrayList();
 
-    public Classs() {
+    public SchoolClass() {
     }
 
-    public Classs(String semester, int maxNumberOfStudents) {
+    public SchoolClass(String semester, int maxNumberOfStudents) {
         this.semester = semester;
         this.maxNumberOfStudents = maxNumberOfStudents;
         
@@ -130,10 +130,10 @@ public class Classs implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Classs)) {
+        if (!(object instanceof SchoolClass)) {
             return false;
         }
-        Classs other = (Classs) object;
+        SchoolClass other = (SchoolClass) object;
         if (this.id != other.id) {
             return false;
         }

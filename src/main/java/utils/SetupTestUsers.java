@@ -1,6 +1,6 @@
 package utils;
 
-import entities.Classs;
+import entities.SchoolClass;
 import entities.Course;
 import entities.Role;
 import entities.Student;
@@ -30,7 +30,7 @@ public class SetupTestUsers {
         Course spanish = new Course("Spanish", "Spanish for rookies");
         Course english = new Course("English", "English for rookies");
 
-        Classs spring = new Classs("Spring2020", 30);
+        SchoolClass spring = new SchoolClass("Spring2020", 30);
 
         SignedUp sign = new SignedUp("");
 

@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
  * @author Dennis
  */
 @Entity
-@Table(name = "SignedUps")
+@Table(name = "SignedUp")
 public class SignedUp implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class SignedUp implements Serializable {
 
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "classId")
-    private Classs clas;
+    private SchoolClass clas;
 
     @ManyToOne
     @JoinColumn(name = "studentId")
@@ -74,11 +74,11 @@ public class SignedUp implements Serializable {
         this.passedDate = passedDate;
     }
 
-    public Classs getClasss() {
+    public SchoolClass getClasss() {
         return clas;
     }
 
-    public void setClas(Classs clas) {
+    public void setClas(SchoolClass clas) {
         this.clas = clas;
     }
 

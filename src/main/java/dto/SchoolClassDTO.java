@@ -5,7 +5,7 @@
  */
 package dto;
 
-import entities.Classs;
+import entities.SchoolClass;
 import entities.SignedUp;
 import entities.Teacher;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Dennis
  */
-public class ClassDTO {
+public class SchoolClassDTO {
     
     private int id;
     private String semester;
@@ -25,21 +25,21 @@ public class ClassDTO {
     private List<TeacherDTO> teachers = new ArrayList();
     private List<SignedUpDTO> signedUps = new ArrayList();
     
-    public ClassDTO(){
+    public SchoolClassDTO(){
         
     }
     
-    public ClassDTO(Classs c){
+    public SchoolClassDTO(SchoolClass c){
         this.id = c.getId();
         this.semester = c.getSemester();
         this.maxNumberOfStudents = c.getMaxNumberOfStudents();
         this.course = new CourseDTO(c.getCourse());
-        for (Teacher teacher : c.getTeachers()) {
-            teachers.add(new TeacherDTO(teacher));
-        }
-        for(SignedUp sign : c.getSignedUps()){
-            signedUps.add(new SignedUpDTO(sign));
-        }
+//        for (Teacher teacher : c.getTeachers()) {
+//            teachers.add(new TeacherDTO(teacher));
+//        }
+//        for(SignedUp sign : c.getSignedUps()){
+//            signedUps.add(new SignedUpDTO(sign));
+//        }
     }
 
     public int getId() {

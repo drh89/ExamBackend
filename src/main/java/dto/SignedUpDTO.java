@@ -17,7 +17,7 @@ public class SignedUpDTO {
     private int id;
     private String grade;
     private Date passedDate;
-    private ClassDTO classs;
+    private SchoolClassDTO classs;
     private StudentDTO student;
     
     public SignedUpDTO(){
@@ -27,7 +27,7 @@ public class SignedUpDTO {
         this.id = sign.getId();
         this.grade = sign.getGrade();
         this.passedDate = sign.getPassedDate();
-        this.classs = new ClassDTO(sign.getClasss());
+        this.classs = new SchoolClassDTO(sign.getClasss());
         this.student = new StudentDTO(sign.getStudent());
     }
 
@@ -55,11 +55,11 @@ public class SignedUpDTO {
         this.passedDate = passedDate;
     }
 
-    public ClassDTO getClasss() {
+    public SchoolClassDTO getClasss() {
         return classs;
     }
 
-    public void setClasss(ClassDTO classs) {
+    public void setClasss(SchoolClassDTO classs) {
         this.classs = classs;
     }
 
